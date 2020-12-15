@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Chathurika.Services.CharServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,8 @@ namespace Chathurika
         {
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ICharServices, CharServices>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Chathurika", Version = "v1" });
